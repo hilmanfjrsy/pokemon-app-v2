@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { InjectManifest } = require('workbox-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -45,11 +44,8 @@ module.exports = {
         { from: './public/offline.html', to: '' },
         { from: './public/manifest.json', to: '' },
         { from: './public/robots.txt', to: '' },
+        { from: './public/service-worker.js', to: '' },
       ]
     }),
-    new InjectManifest({
-      swSrc: './src/service-worker.js',
-      swDest: 'service-worker.js'
-    })
   ],
 }

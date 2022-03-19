@@ -5,7 +5,6 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import App from './router';
 import reportWebVitals from './reportWebVitals';
-import registerServiceWorker from './register-sw';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,4 +17,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-registerServiceWorker()
