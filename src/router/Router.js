@@ -1,14 +1,18 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages";
-import DetailPokemon from "../pages/DetailPokemon";
-import MyPokemon from "../pages/MyPokemon";
+
+const Home = lazy(() => import('../pages'))
+const DetailPokemon = lazy(() => import('../pages/DetailPokemon'))
+const MyPokemon = lazy(() => import('../pages/MyPokemon'))
 
 export default function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/detail-pokemon" element={<DetailPokemon />} />
-      <Route path="/my-pokemon" element={<MyPokemon />} />
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail-pokemon" element={<DetailPokemon />} />
+        <Route path="/my-pokemon" element={<MyPokemon />} />
+      </Routes>
+    </Suspense>
   );
 }

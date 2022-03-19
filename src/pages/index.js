@@ -1,20 +1,16 @@
-import React, { Fragment, lazy, Suspense, useContext, useEffect, useState } from 'react';
-import LoadingScreen from '../components/LoadingScreen';
-import { ContextProvider } from '../context/BaseContext';
-import Navigation from '../router/Navigation';
+import React, { Fragment, lazy, Suspense, useEffect, useState } from 'react';
 import { getRequest } from '../utils/GlobalFunction';
+
+const Navigation = lazy(() => import('../router/Navigation'));
 const CardPokemon = lazy(() => import('../components/CardPokemon'));
-const renderLoader = () => <div className='card' />;
+const renderLoader = () => <div>Loading...</div>;
+
 export default function Home() {
-  const context = useContext(ContextProvider)
   const [listPokemon, setListPokemon] = useState([])
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon')
   const [nextUrl, setNextUrl] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [firstLoading, setFirstLoading] = useState(true)
 
   async function getPokemon() {
-    setLoading(true)
     const response = await getRequest(url)
     setNextUrl(response.data.next)
     var temp = []
@@ -57,8 +53,6 @@ export default function Home() {
       res.data.species = resSpecies.data
       temp.push(res.data)
       setListPokemon(listPokemon.concat(temp).sort((a, b) => a.id - b.id))
-      setFirstLoading(false)
-      setLoading(false)
     })
 
   }
@@ -67,11 +61,11 @@ export default function Home() {
     getPokemon()
   }, [url])
 
-  if (loading && firstLoading) return <LoadingScreen />
-
   return (
     <Fragment>
-      <Navigation />
+      <Suspense fallback={renderLoader()}>
+        <Navigation />
+      </Suspense>
       <div className='container p-5 flex-center'>
         <div>
           <div className='center' style={{ marginTop: 10 }}>
@@ -79,14 +73,14 @@ export default function Home() {
           <div className='container-grid' >
             {listPokemon.map((item, index) => <Suspense fallback={renderLoader()} key={index}><CardPokemon item={item} index={index} /></Suspense>)}
           </div>
-          <div className='center' style={{ marginTop: 30, marginBottom: 30 }}>
+          {listPokemon.length > 0 && <div className='center' style={{ marginTop: 30, marginBottom: 30 }}>
             <button
               className='btn btn-primary'
               onClick={() => setUrl(nextUrl)}
             >
               Load more
             </button>
-          </div>
+          </div>}
         </div>
       </div>
     </Fragment>

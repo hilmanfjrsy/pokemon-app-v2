@@ -39,6 +39,12 @@ export default function GlobalStyles() {
         font-weight:bold;
         color:${GlobalVar.secondaryColor};
       }
+      w-100{
+        width:100px
+      }
+      h-100{
+        height:100px
+      }
       .f-20{
         font-size: 20px !important
       }
