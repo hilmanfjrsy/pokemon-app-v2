@@ -71,13 +71,23 @@ export default function DetailPokemon() {
           </div>
 
           <div className='container-bottom '>
-            <button
-              className='btn btn-primary'
-              onClick={() => catchPokemon(state)}
-              style={{ width: '100%', marginTop: 20 }}
-            >
-              Catch Pokemon
-            </button>
+            {state.nickname ?
+              <button
+                className='btn btn-primary'
+                onClick={() => { releasePokemon(state, context, context.myPokemon, navigate) }}
+                style={{ width: '100%', marginTop: 20, backgroundColor: 'firebrick' }}
+              >
+                Release Pokemon
+              </button>
+              :
+              <button
+                className='btn btn-primary'
+                onClick={() => catchPokemon(state)}
+                style={{ width: '100%', marginTop: 20 }}
+              >
+                Catch Pokemon
+              </button>
+            }
           </div>
 
           <span className='card-title mt-2'>Evolution</span>
