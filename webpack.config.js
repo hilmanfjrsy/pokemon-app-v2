@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   // Where files should be sent once they are bundled
@@ -24,9 +26,21 @@ module.exports = {
      },
      {
        test: /\.css$/,
-       use: ['style-loader', 'css-loader']
+       use: [MiniCssExtractPlugin.loader, 'css-loader']
      }
    ]
  },
- plugins: [new HtmlWebpackPlugin({ template: './public/index.html' })],
+ plugins: [
+   new HtmlWebpackPlugin({ 
+     template: './public/index.html',
+     title: 'Pokemon App PWA' 
+    }), 
+   new MiniCssExtractPlugin(),
+   new WorkboxPlugin.GenerateSW({
+    // these options encourage the ServiceWorkers to get in there fast
+    // and not allow any straggling "old" SWs to hang around
+    clientsClaim: true,
+    skipWaiting: true,
+  }),
+  ],
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-
-const Home = lazy(() => import('../pages'))
-const DetailPokemon = lazy(() => import('../pages/DetailPokemon'))
-const MyPokemon = lazy(() => import('../pages/MyPokemon'))
+import Home from "../pages";
+import DetailPokemon from "../pages/DetailPokemon";
+import MyPokemon from "../pages/MyPokemon";
 
 export default function Router() {
   return (

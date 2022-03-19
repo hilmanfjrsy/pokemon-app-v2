@@ -46,7 +46,7 @@ export default function DetailPokemon() {
       right: capitalizeFirstLetter(state.species.habitat.name)
     },
   ]
-  // console.log(state)
+  console.log(state)
   return (
     <div className='container'>
       <button onClick={() => navigate(-1)} className='btn btn-back'>
