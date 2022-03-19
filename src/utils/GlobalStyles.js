@@ -29,6 +29,7 @@ export default function GlobalStyles() {
       }
       nav a{
         margin:0.5rem;
+        font-weight: 500;
         color:grey
       }
       nav a:hover{
@@ -41,7 +42,7 @@ export default function GlobalStyles() {
       .f-20{
         font-size: 20px !important
       }
-      i{
+      nav svg{
         margin: 0.3rem
       }
       .space-between{
@@ -80,7 +81,7 @@ export default function GlobalStyles() {
         left:20px !important;
         border-radius:100% !important
       }
-      .btn-back i{
+      .btn-back svg{
         color: white
       }
       .center{
@@ -161,6 +162,11 @@ export default function GlobalStyles() {
         justify-content:center;
         display:flex
       }
+      .img-container img{
+        width:70px;
+        height:70px;
+        object-fit:contain
+      }
       .logo{
         font-size: 1.2rem;
         font-weight: bold;
@@ -177,6 +183,7 @@ export default function GlobalStyles() {
       }
       small{
         font-size:10px;
+        font-weight: 500;
         color:grey;
       }
       progress{

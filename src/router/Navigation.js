@@ -1,16 +1,16 @@
-import React, { Component, useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { ContextProvider } from '../context/BaseContext';
+import { faBoxOpen, faHouse } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Navigation() {
-  const context = useContext(ContextProvider)
   const tabs = [{
     route: "/",
-    icon: "fa-solid fa-house",
+    icon: faHouse,
     label: "Home"
   }, {
     route: "/my-pokemon",
-    icon: "fa-solid fa-box-open",
+    icon: faBoxOpen,
     label: "My Pokemon"
   }]
 
@@ -29,8 +29,8 @@ export default function Navigation() {
         {
           tabs.map((item, index) => (
             <div key={index}>
-              <NavLink to={item.route} className={({isActive})=>(isActive? "active":'')}>
-                <i className={`${item.icon} f-20`}></i>
+              <NavLink to={item.route} className={({isActive})=>(isActive? "active center":'center')}>
+                <FontAwesomeIcon icon={item.icon} />
                 <span>{item.label}</span>
               </NavLink>
             </div>

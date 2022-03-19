@@ -1,10 +1,8 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { Fragment, useContext } from 'react';
 import CardPokemon from '../components/CardPokemon';
 import { ContextProvider } from '../context/BaseContext';
 import Navigation from '../router/Navigation';
 import { releasePokemon } from '../utils/GlobalFunction';
-import GlobalVar from '../utils/GlobalVar';
 
 export default function MyPokemon() {
   const context = useContext(ContextProvider)

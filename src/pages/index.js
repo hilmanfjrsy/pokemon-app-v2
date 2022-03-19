@@ -1,12 +1,10 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import CardPokemon from '../components/CardPokemon';
+import React, { Fragment, lazy, Suspense, useContext, useEffect, useState } from 'react';
 import LoadingScreen from '../components/LoadingScreen';
 import { ContextProvider } from '../context/BaseContext';
 import Navigation from '../router/Navigation';
 import { getRequest } from '../utils/GlobalFunction';
-import GlobalVar from '../utils/GlobalVar';
-
+const CardPokemon = lazy(() => import('../components/CardPokemon'));
+const renderLoader = () => <div className='card' />;
 export default function Home() {
   const context = useContext(ContextProvider)
   const [listPokemon, setListPokemon] = useState([])
@@ -58,7 +56,7 @@ export default function Home() {
       resSpecies.data.evolution_chain = tempEvo
       res.data.species = resSpecies.data
       temp.push(res.data)
-      setListPokemon(listPokemon.concat(temp).sort((a,b)=>a.id - b.id))
+      setListPokemon(listPokemon.concat(temp).sort((a, b) => a.id - b.id))
       setFirstLoading(false)
       setLoading(false)
     })
@@ -77,10 +75,9 @@ export default function Home() {
       <div className='container p-5 flex-center'>
         <div>
           <div className='center' style={{ marginTop: 10 }}>
-            {/* <img src={require('../assets/pokemon.png')} className='logo' /> */}
           </div>
           <div className='container-grid' >
-            {listPokemon.map((item, index) => <CardPokemon item={item} index={index} key={index} />)}
+            {listPokemon.map((item, index) => <Suspense fallback={renderLoader()} key={index}><CardPokemon item={item} index={index} /></Suspense>)}
           </div>
           <div className='center' style={{ marginTop: 30, marginBottom: 30 }}>
             <button

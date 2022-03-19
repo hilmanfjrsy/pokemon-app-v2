@@ -1,9 +1,10 @@
-import React, { Component, Fragment, useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import CardPokemon from '../components/CardPokemon';
 import { ContextProvider } from '../context/BaseContext';
-import { capitalizeFirstLetter, getRequest, releasePokemon } from '../utils/GlobalFunction';
+import { capitalizeFirstLetter, releasePokemon } from '../utils/GlobalFunction';
 import GlobalVar from '../utils/GlobalVar';
 
 export default function DetailPokemon() {
@@ -49,11 +50,11 @@ export default function DetailPokemon() {
   return (
     <div className='container'>
       <button onClick={() => navigate(-1)} className='btn btn-back'>
-        <i className="fa-solid fa-arrow-left"></i>
+        <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <div className='container-detail'>
         <div className='detail-img'>
-          <img src={state.sprites.front_default} />
+          <img src={state.sprites.front_default} alt='pokemon' />
         </div>
         <div className='container-description'>
           <div className=' space-between'>
@@ -135,12 +136,12 @@ export default function DetailPokemon() {
       <>
         {index != 0 &&
           <div className='arrow'>
-            <i className="fa-solid fa-arrow-right"></i>
+            <FontAwesomeIcon icon={faArrowRight} />
             {item.min_level && <small>(Level {item.min_level})</small>}
           </div>
         }
         <div className='evolution-container'>
-          <img src={item.avatar} />
+          <img src={item.avatar} alt={item.name} />
           <small>{capitalizeFirstLetter(item.name)}</small>
         </div>
       </>

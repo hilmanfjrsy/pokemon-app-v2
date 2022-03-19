@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import GlobalStyles from '../utils/GlobalStyles';
 import Router from './Router';
 import { ToastContainer } from "react-toastify";
 import BaseContext from '../context/BaseContext';
-import Navigation from './Navigation';
 
 export default function App() {
   return (
