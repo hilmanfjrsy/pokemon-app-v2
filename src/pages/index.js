@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <Fragment>
-      <Suspense fallback={renderLoader()}>
+      <Suspense fallback={<div/>}>
         <Navigation />
       </Suspense>
       <div className='container p-5 flex-center'>

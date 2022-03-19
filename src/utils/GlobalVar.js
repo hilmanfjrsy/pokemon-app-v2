@@ -1,3 +1,4 @@
+import React from 'react'
 const GlobalVar = {
   baseColor:'#FFCC01',
   secondaryColor:'#3264B0'

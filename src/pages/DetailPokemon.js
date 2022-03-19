@@ -1,7 +1,7 @@
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import { ContextProvider } from '../context/BaseContext';
 import { capitalizeFirstLetter, releasePokemon } from '../utils/GlobalFunction';

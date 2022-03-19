@@ -1,3 +1,4 @@
+import React from 'react'
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -7,7 +8,7 @@ const MyPokemon = lazy(() => import('../pages/MyPokemon'))
 
 export default function Router() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div/>}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail-pokemon" element={<DetailPokemon />} />
