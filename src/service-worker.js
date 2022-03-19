@@ -66,7 +66,7 @@ registerRoute(
   ({ url }) => url.origin === 'https://api.themoviedb.org' &&
     url.pathname.startsWith('/3/discover/tv'),
   new StaleWhileRevalidate({
-    cacheName: 'movie-api-response',
+    cacheName: 'version-1',
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],

@@ -44,6 +44,7 @@ module.exports = {
         { from: './public/_redirects', to: '' },
         { from: './public/offline.html', to: '' },
         { from: './public/manifest.json', to: '' },
+        { from: './public/robots.txt', to: '' },
       ]
     }),
     new InjectManifest({
