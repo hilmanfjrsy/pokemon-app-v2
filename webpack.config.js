@@ -5,9 +5,16 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   // Where files should be sent once they are bundled
+  entry: [
+    "core-js/modules/es.promise",
+    "core-js/modules/es.array.iterator",
+    path.resolve(__dirname, "./src/index")
+  ],
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index.bundle.js'
+    filename: "[name].bundle.js",
+    chunkFilename: "[name].bundle.js",
   },
   // webpack 5 comes with devServer which loads in development mode
   devServer: {
@@ -15,6 +22,18 @@ module.exports = {
     //  watchContentBase: true
   },
   // Rules of how webpack will take our files, complie & bundle them for the browser 
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {

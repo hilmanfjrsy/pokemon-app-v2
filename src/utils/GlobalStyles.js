@@ -22,6 +22,14 @@ export default function GlobalStyles() {
         right: 0;
       }
 
+      .w-100{
+        width:100px
+      }
+
+      .h-100{
+        height:100px
+      }
+
       .fixed-bottom{
         position: fixed;
         bottom:0;
